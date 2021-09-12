@@ -1,0 +1,33 @@
+
+{% extends 'login/basic.html' %}
+
+{% block title%}sign in{% endblock %}
+{% block body %}
+
+
+{% load crispy_forms_tags %}
+<!--Login--> 
+<div class="container" style="background-color: white">
+<div class="container py-5">
+ <center> <h1>LOGIN</h1></center>
+  <form method="POST">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <button class="btn btn-primary" type="submit">Login</button>
+
+     		
+  </form>
+  {% if messages %}
+    	{% for i  in  messages%}
+    		
+<div class="alert alert-danger" role="alert">
+  {{i}}
+</div>
+   		{% endfor%}
+   	{% endif%}
+  <p class="text-center">Don't have an account? <a href="/login/register">Create an account</a>.</p>
+<!-- <p class="text-center">forget password? <a href="/login/forget_pass">forget password</a>.</p>
+-->
+</div>
+</div>
+{% endblock %}
